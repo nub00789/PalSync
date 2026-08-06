@@ -15,6 +15,10 @@ class Config:
             self.data = json.load(f)
 
     @property
+    def player_name(self):
+        return self.data["player_name"]
+
+    @property
     def world_name(self):
         return self.data["world_name"]
 
@@ -58,5 +62,4 @@ class Config:
     def set(self, key, value):
 
         self.data[key] = value
-
         self.save()

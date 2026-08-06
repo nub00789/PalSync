@@ -1,10 +1,8 @@
 {
+    "player_name": "Yusuf",
     "world_name": "Our Palworld",
-
     "port": 8211,
-
     "query_port": 27015,
-
     "players": [
         {
             "name": "Yusuf",
@@ -17,13 +15,9 @@
             "tailscale_ip": "100.76.137.105"
         }
     ],
-
     "steam_path": "D:/SteamLibrary/steamapps/common/Palworld",
-
     "server_path": "E:/SteamLibrary/steamapps/common/PalServer/PalServer.exe",
-
     "save_path": "",
-
     "syncthing": {
         "url": "http://127.0.0.1:8384",
         "folder_id": "palworld"
