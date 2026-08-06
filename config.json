@@ -3,21 +3,26 @@
     "world_name": "Our Palworld",
     "port": 8211,
     "query_port": 27015,
+
     "players": [
         {
             "name": "Yusuf",
             "hostname": "z590-d",
-            "tailscale_ip": "100.122.255.11"
+            "tailscale_ip": "100.122.255.11",
+            "priority": 100
         },
         {
             "name": "Aayush",
             "hostname": "aayush",
-            "tailscale_ip": "100.76.137.105"
+            "tailscale_ip": "100.76.137.105",
+            "priority": 200
         }
     ],
+
     "steam_path": "D:/SteamLibrary/steamapps/common/Palworld",
     "server_path": "E:/SteamLibrary/steamapps/common/PalServer/PalServer.exe",
     "save_path": "",
+
     "syncthing": {
         "url": "http://127.0.0.1:8384",
         "folder_id": "palworld"
