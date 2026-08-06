@@ -2,25 +2,7 @@ import json
 import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
-_status_provider = None
-
-
-def register_status_provider(provider):
-    global _status_provider
-    _status_provider = provider
-
-
-def get_status():
-
-    if _status_provider is None:
-        return {
-            "name": "",
-            "hosting": False,
-            "running": False,
-            "sync": 0,
-        }
-
-    return _status_provider()
+from status_store import get
 
 
 class StatusHandler(BaseHTTPRequestHandler):
@@ -32,7 +14,7 @@ class StatusHandler(BaseHTTPRequestHandler):
             self.end_headers()
             return
 
-        body = json.dumps(get_status()).encode("utf-8")
+        body = json.dumps(get()).encode("utf-8")
 
         self.send_response(200)
         self.send_header("Content-Type", "application/json")
@@ -42,7 +24,7 @@ class StatusHandler(BaseHTTPRequestHandler):
         self.wfile.write(body)
 
     def log_message(self, *args):
-        return
+        pass
 
 
 _server = None
@@ -55,15 +37,16 @@ def start_api(host="0.0.0.0", port=45678):
     if _server is not None:
         return
 
-    _server = ThreadingHTTPServer((host, port), StatusHandler)
+    _server = ThreadingHTTPServer(
+        (host, port),
+        StatusHandler
+    )
 
-    thread = threading.Thread(
+    threading.Thread(
         target=_server.serve_forever,
         daemon=True,
         name="PalSyncAPI",
-    )
-
-    thread.start()
+    ).start()
 
 
 def stop_api():
