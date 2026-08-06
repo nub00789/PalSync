@@ -1,0 +1,19 @@
+{
+    "world_name": "Our Palworld",
+    "port": 8211,
+
+    "players": [
+        {
+            "name": "Yusuf",
+            "hostname": "z590-d"
+        },
+        {
+            "name": "Aayush",
+            "hostname": "aayush"
+        }
+    ],
+
+    "steam_path": "",
+    "server_path": "",
+    "save_path": ""
+}

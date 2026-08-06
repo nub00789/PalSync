@@ -1,0 +1,26 @@
+# Virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# VS Code
+.vscode/
+
+# Logs
+logs/
+
+# Build output
+build/
+dist/
+
+# PyInstaller
+*.spec
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Environment variables
+.env
