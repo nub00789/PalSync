@@ -49,13 +49,13 @@ class StatusManager:
             try:
 
                 status_store.update(
-                    name="Yusuf",          # We'll replace this soon
+                    name=self.cfg.player_name,
                     hosting=self.server.running(),
                     running=self.server.running(),
                     sync=self.sync.completion(),
                 )
 
-            except Exception:
-                pass
+            except Exception as e:
+                print(f"StatusManager Error: {e}")
 
             time.sleep(1)
