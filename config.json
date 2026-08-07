@@ -1,8 +1,11 @@
 {
     "player_name": "Yusuf",
     "world_name": "Our Palworld",
+
     "port": 8211,
     "query_port": 27015,
+
+    "host_wait_timeout": 15,
 
     "players": [
         {

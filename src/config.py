@@ -23,16 +23,20 @@ class Config:
         return self.data["world_name"]
 
     @property
-    def players(self):
-        return self.data["players"]
-
-    @property
     def port(self):
         return self.data["port"]
 
     @property
     def query_port(self):
         return self.data["query_port"]
+
+    @property
+    def host_wait_timeout(self):
+        return self.data["host_wait_timeout"]
+
+    @property
+    def players(self):
+        return self.data["players"]
 
     @property
     def steam_path(self):
