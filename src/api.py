@@ -3,9 +3,6 @@ import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 from status_store import get
-from lock_manager import LockManager
-
-lock_manager = LockManager()
 
 
 class StatusHandler(BaseHTTPRequestHandler):
@@ -27,50 +24,6 @@ class StatusHandler(BaseHTTPRequestHandler):
 
         self.send_response(404)
         self.end_headers()
-
-    def do_POST(self):
-
-        if self.path != "/world-lock":
-            self.send_response(404)
-            self.end_headers()
-            return
-
-        length = int(self.headers.get("Content-Length", 0))
-
-        data = json.loads(
-            self.rfile.read(length).decode("utf-8")
-        )
-
-        action = data.get("action")
-        owner = data.get("owner")
-
-        if action == "acquire":
-
-            success = lock_manager.acquire(owner)
-
-        elif action == "release":
-
-            success = lock_manager.release(owner)
-
-        elif action == "heartbeat":
-
-            success = lock_manager.heartbeat(owner)
-
-        else:
-
-            success = False
-
-        body = json.dumps({
-            "success": success,
-            "lock": lock_manager.status()
-        }).encode("utf-8")
-
-        self.send_response(200)
-        self.send_header("Content-Type", "application/json")
-        self.send_header("Content-Length", str(len(body)))
-        self.end_headers()
-
-        self.wfile.write(body)
 
     def log_message(self, *args):
         pass
